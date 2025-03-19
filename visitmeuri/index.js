@@ -26,22 +26,6 @@ class Timestamp_service {
   }
 }
 
-app.get('/', (req, res) => {
-  let result = Timestamp_service.parse_date(false);
-  return res.json(result);
-  res.send(`
-    <h1>Timestamp Microservice Project</h1>
-    <p>Example Of Usage Or Quick Check ✨✨✨</p>
-    <ul>
-      <li><a href="/api/2015-12-25">Check for this date 2015-12-25</a></li>
-      <li><a href="/api/1451001600000">Also check this 1451001600000</a></li>
-    </ul>
-    <p>You May See This Output 👍👍</p>
-    <pre>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</pre>
-    <p style="color: blue;">By Uwayo Parfait👌</p>
-  `);
-});
-
 app.get('/api/:date?', (req, res) => {
   let result = Timestamp_service.parse_date(req.params.date);
   res.json(result);
