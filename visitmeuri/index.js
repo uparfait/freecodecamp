@@ -27,6 +27,8 @@ class Timestamp_service {
 }
 
 app.get('/', (req, res) => {
+  let result = Timestamp_service.parse_date(false);
+  return res.json(result);
   res.send(`
     <h1>Timestamp Microservice Project</h1>
     <p>Example Of Usage Or Quick Check ✨✨✨</p>
@@ -41,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/:date?', (req, res) => {
-  const result = Timestamp_service.parse_date(req.params.date);
+  let result = Timestamp_service.parse_date(req.params.date);
   res.json(result);
 });
 
