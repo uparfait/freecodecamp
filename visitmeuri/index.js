@@ -27,12 +27,9 @@ class Timestamp_service {
 }
 
 app.get('/api/:date?', (req, res) => {
-  let result = Timestamp_service.parse_date(req.params.date);
+  const date_param = req.params.date;
+  const result = Timestamp_service.parse_date(date_param);
   res.json(result);
-});
-app.use((req, res) => {
-  //let result = Timestamp_service.parse_date(req.params.date);
-  res.json( { error: "Invalid Date" });
 });
 
 app.listen(port, () => {
@@ -40,4 +37,3 @@ app.listen(port, () => {
 });
 
 module.exports = app;
-        
