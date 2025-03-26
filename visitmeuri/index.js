@@ -1,39 +1,43 @@
 const express = require('express');
 const app = express();
-const port = 2025;
 
-class Timestamp_service {
-  static parse_date(date_param) {
-    let date_obj;
-
-    if (!date_param) {
-      date_obj = new Date();
-    } else if (/^\d+$/.test(date_param)) {
-      const timestamp = parseInt(date_param);
-      date_obj = new Date(timestamp);
-    } else {
-      date_obj = new Date(date_param);
-    }
-
-    if (isNaN(date_obj.getTime())) {
-      return { error: "Invalid Date" };
-    }
-
-    return {
-      unix: date_obj.getTime(),
-      utc: date_obj.toUTCString()
-    };
-  }
-}
-
-app.get('/api/:date?', (req, res) => {
-  const date_param = req.params.date;
-  const result = Timestamp_service.parse_date(date_param);
-  res.json(result);
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
 });
 
-app.listen(port, () => {
-  console.log(`Timestamp Microservice listening on port ${port}`);
+app.get('/api/:date?', (req, res) => {
+  let date;
+  const dateParam = req.params.date;
+
+  if (!dateParam) {
+    date = new Date();
+  } else {
+   
+    if (/^\d+$/.test(dateParam)) {
+      date = new Date(parseInt(dateParam));
+    } else {
+      date = new Date(dateParam);
+    }
+  }
+
+  if (isNaN(date.getTime())) {
+    return res.json({ error: "Invalid Date" });
+  }
+
+
+  res.json({
+    unix: date.getTime(),
+    utc: date.toUTCString()
+  });
+});
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 module.exports = app;
