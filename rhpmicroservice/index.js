@@ -64,3 +64,4 @@ class WhoAmIServer {
 
 const server = new WhoAmIServer();
 server.start();
+module.exports = server.app;
