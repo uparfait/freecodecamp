@@ -21,7 +21,7 @@ app.post('/api/fileanalyse', (req, res) => {
 
 app.get('*', (req, res) => {
     const html = path.resolve('./', 'index.html');
-    res.status(200).type('text/html').sendFile(html);
+    res.status(200).type('text/plain').end('hello users');
 });
 
 app.listen(PORT, () => console.log('---Ready!---'));
