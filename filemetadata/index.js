@@ -46,3 +46,4 @@ const server = new Server(app)
 server.Middeware()
 server.Router()
 server.start(PORT)
+export default app
