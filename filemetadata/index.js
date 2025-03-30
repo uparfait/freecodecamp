@@ -39,6 +39,7 @@ class Server {
 
    start(port) {
     this.app.listen(port, _ => console.log("---Ready!---"))
+     export default this.app
   }
 }
 
@@ -46,4 +47,3 @@ const server = new Server(app)
 server.Middeware()
 server.Router()
 server.start(PORT)
-export default server.app
