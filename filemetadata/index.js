@@ -24,5 +24,5 @@ app.get('*', (req, res) => {
     res.status(200).type('text/html').sendFile(html);
 });
 
-app.listen(PORT () => console.log('---Ready!---'));
+app.listen(PORT, () => console.log('---Ready!---'));
 module.exports = app;
