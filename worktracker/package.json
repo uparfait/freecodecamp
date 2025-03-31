@@ -1,0 +1,20 @@
+{
+	"name": "fcc-exercise-tracker",
+	"version": "0.1.0",
+	"description": "A REST API project, part of Free Code Camp's curriculum",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.16.4",
+		"fcc-exercise-tracker": "file:"
+	},
+	"license": "MIT",
+	"keywords": [
+		"node",
+		"express"
+	]
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise Tracker | Parfait Uwayo</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Exercise tracker</h1>
+      <form action="/api/users" method="post" enctype="application/x-www-form-urlencoded">
+        <h2>Create a New User</h2>
+        <input id="uname" type="text" name="username" placeholder="username" />
+        <input type="submit" value="Submit" />
+      </form>
+      <form action="/api/users/:_id/exercises" id="exercise-form" method="post" enctype="application/x-www-form-urlencoded">
+        <h2>Add exercises</h2>
+        <input id="uid" type="text" name=":_id" placeholder=":_id" />
+        <input id="desc" type="text" name="description" placeholder="description*" />
+        <input id="dur" type="text" name="duration" placeholder="duration* (mins.)" />
+        <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <script>
+      const exerciseForm = document.getElementById("exercise-form");
+
+      exerciseForm.addEventListener("submit", () => {
+        const userId = document.getElementById("uid").value;
+        exerciseForm.action = `/api/users/${userId}/exercises`;
+
+        exerciseForm.submit();
+      });
+    </script>
+  </body>
+</html>
