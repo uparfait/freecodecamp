@@ -21,6 +21,7 @@ class Server {
    Router() {
 
     this.app.post('/api/fileanalyse', (req, res) =>{
+      return res.json(req.file)
       if(!req?.file?.type) return res.json({error: 'No File!'})
         res.status(200).json({
             name: req.file.originalname,
