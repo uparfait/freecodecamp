@@ -103,13 +103,15 @@ class ExerciseTracker {
 }
 
 const exerciseTracker = new ExerciseTracker();
-
+app.use(express.static(__dirname + '/public/'))
 app.get('/api/users', (req, res) => exerciseTracker.sendUsers(req, res));
 app.post('/api/users', (req, res) => exerciseTracker.createUser(req, res));
 app.post('/api/users/:_id/exercises', (req, res) => exerciseTracker.addExercise(req, res));
 app.get('/api/users/:_id/logs', (req, res) => exerciseTracker.getLogs(req, res));
-app.use(express.static(__dirname + '/public/'))
 
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html')
+});
 app.post('*', (req, res) => {
   res.status(404).end()
 });
