@@ -108,6 +108,7 @@ app.get('/api/users', (req, res) => exerciseTracker.sendUsers(req, res));
 app.post('/api/users', (req, res) => exerciseTracker.createUser(req, res));
 app.post('/api/users/:_id/exercises', (req, res) => exerciseTracker.addExercise(req, res));
 app.get('/api/users/:_id/logs', (req, res) => exerciseTracker.getLogs(req, res));
+app.use(express.static(__dirname + '/public/'))
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
