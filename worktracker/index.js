@@ -110,9 +110,10 @@ app.post('/api/users/:_id/exercises', (req, res) => exerciseTracker.addExercise(
 app.get('/api/users/:_id/logs', (req, res) => exerciseTracker.getLogs(req, res));
 app.use(express.static(__dirname + '/public/'))
 
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
+
 
 const listener = app.listen(3000, () => {
   console.log('Server running on port ' + listener.address().port);
