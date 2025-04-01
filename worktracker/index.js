@@ -106,6 +106,7 @@ class ExerciseTracker {
 const exerciseTracker = new ExerciseTracker();
 
 app.use(express.static(__dirname + '/views/'))
+app.use(express.static(__dirname + '/public/'))
 app.get('/api/users', (req, res) => exerciseTracker.sendUsers(req, res));
 app.post('/api/users', (req, res) => exerciseTracker.createUser(req, res));
 app.post('/api/users/:_id/exercises', (req, res) => exerciseTracker.addExercise(req, res));
