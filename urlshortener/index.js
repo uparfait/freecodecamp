@@ -99,7 +99,7 @@ app.post("/api/shorturl", (req, res) => {
   });
 });
 
-app.get("/api/:urlShort?", function (req, res) {
+app.get("/api/shorturl/:urlShort?", function (req, res) {
   if (!req.params.urlShort) {
     return res.json({ error: "invalid url" });
   }
