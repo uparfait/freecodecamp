@@ -1,22 +1,19 @@
+exports.HTML = (SiteNames) => {
+  let tr = [];
 
-exports.HTML = SiteNames => {
- 
-    let tr = []
-
-    for(x of SiteNames) {
-        tr.push(
-            `
+  for (x of SiteNames) {
+    tr.push(
+      `
             <tr>
               <td>${x[0]}</td>
               <td> <a href="api/${x[1]}">${x[1]}</a></td>
             </tr>
 
             `
-        )
-    }
+    );
+  }
 
-
-    return `
+  return `
     <!DOCTYPE html>
 
 <html>
@@ -27,7 +24,70 @@ exports.HTML = SiteNames => {
       type="image/png"
       href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
     />
-    <link href="/public/style.css" rel="stylesheet" type="text/css" />
+    <style>
+    body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #222;
+  background-color: #fff;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+main {
+  padding: 0;
+  margin-top: 40px;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+.user-stories li {
+  margin-bottom: 1em;
+}
+
+a {
+  color: #2574a9;
+}
+
+form {
+  margin: 10px auto;
+  padding: 20px;
+  max-width: 600px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  padding: 5px;
+}
+
+input[type='text'] {
+  width: 220px;
+  text-align: center;
+}
+
+    </style>
   </head>
 
   <body>
@@ -53,9 +113,7 @@ exports.HTML = SiteNames => {
             <th>Link</th>
           </thead>
           <tbody>
-           ${
-          tr.join('')
-           }
+           ${tr.join("")}
           </tbody>
         </table>      
       </fieldset>
@@ -66,6 +124,5 @@ exports.HTML = SiteNames => {
   </body>
 </html>
 
-    `
-
-}
+    `;
+};
