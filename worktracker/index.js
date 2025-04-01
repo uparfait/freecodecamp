@@ -105,14 +105,14 @@ class ExerciseTracker {
 
 const exerciseTracker = new ExerciseTracker();
 
-app.use(express.static(__dirname + '/public/'))
+app.use(express.static(__dirname + '/views/'))
 app.get('/api/users', (req, res) => exerciseTracker.sendUsers(req, res));
 app.post('/api/users', (req, res) => exerciseTracker.createUser(req, res));
 app.post('/api/users/:_id/exercises', (req, res) => exerciseTracker.addExercise(req, res));
 app.get('/api/users/:_id/logs', (req, res) => exerciseTracker.getLogs(req, res));
 
 app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+  res.status(404).json({ error: 'Api not found' });
 });
 
 const PORT = process.env.PORT || 3000;
