@@ -43,6 +43,8 @@ class TimestampServer {
     });
   }
 
+  this.app.get('*', (req, res) => res.redirect('https://timestamp-five.vercel.app/api'))
+
   start() {
     this.app.listen(this.port, () => {
       console.log(`Server running on port ${this.port}`);
