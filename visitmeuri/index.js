@@ -41,9 +41,10 @@ class TimestampServer {
         utc: date.toUTCString()
       });
     });
+
+     this.app.get('*', (req, res) => res.redirect('https://timestamp-five.vercel.app/api'))
   }
 
-  this.app.get('*', (req, res) => res.redirect('https://timestamp-five.vercel.app/api'))
 
   start() {
     this.app.listen(this.port, () => {
