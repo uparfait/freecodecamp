@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const dns = require("dns");
 const app = express();
 const port = 3000;
@@ -40,7 +39,12 @@ function SolveUrlName(url = "www.Available.com") {
   return sitename;
 }
 
-app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static(`${process.cwd()}/public`));
@@ -114,4 +118,4 @@ app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
 
-module.exports = app
+module.exports = app;
