@@ -6,7 +6,7 @@ exports.HTML = (SiteNames) => {
       `
             <tr>
               <td>${x[0]}</td>
-              <td> <a href="api/${x[1]}">${x[1]}</a></td>
+              <td> <a href="api/shorturl/${x[1]}">${x[1]}</a></td>
             </tr>
 
             `
